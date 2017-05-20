@@ -17,19 +17,33 @@ public class InternetBills {
         Scanner sc = new Scanner(System.in);
         String userInputPackage;
         int userInputHours;
+        int exceededHours =0;
+        double extraCharge =0;
+        double totalBill = 0;
         System.out.println("What package do you use?");
         userInputPackage = sc.nextLine();
         System.out.println("How many hours did you use?");
         userInputHours = sc.nextInt();
 
         if (userInputPackage.equalsIgnoreCase("a")) {
-
+            if (userInputHours>PACKAGE_A_HOURS){
+                exceededHours = userInputHours - PACKAGE_A_HOURS;
+                extraCharge = exceededHours*PACKAGE_A_EXTRA_FEE;
+            }
+            totalBill = PACKAGE_A_BASE_PRICE + extraCharge;
+        } else if (userInputPackage.equalsIgnoreCase("b")) {
+            if (userInputHours > PACKAGE_B_HOURS) {
+                exceededHours = userInputHours - PACKAGE_B_HOURS;
+                extraCharge = exceededHours * PACKAGE_B_EXTRA_FEE;
+            }
+            totalBill = PACKAGE_B_BASE_PRICE + extraCharge;
+        } else if (userInputPackage.equalsIgnoreCase("c")) {
+            totalBill = PACKAGE_C_BASE_PRICE;
         }
-
+        System.out.printf("Your choosen package is: %s\n Hours exceeded: %d\n Extra fee: %f\n Total bill: %f",
+                userInputPackage, exceededHours, extraCharge, totalBill );
 
     }
-
-
 }
 
 /*
