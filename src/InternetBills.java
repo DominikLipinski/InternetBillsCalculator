@@ -40,7 +40,8 @@ public class InternetBills {
         } else if (userInputPackage.equalsIgnoreCase("c")) {
             totalBill = PACKAGE_C_BASE_PRICE;
         }
-        System.out.printf("Your choosen package is: %s\n Hours exceeded: %d\n Extra fee: %f\n Total bill: %f",
+        System.out.printf("Your choosen package is: %s\n Hours exceeded: %d\n " +
+                        "Extra fee: $%.2f\n Total bill: $%.2f",
                 userInputPackage, exceededHours, extraCharge, totalBill );
 
     }
