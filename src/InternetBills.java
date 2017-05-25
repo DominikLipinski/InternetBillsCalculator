@@ -25,6 +25,7 @@ public class InternetBills {
         double totalBillB = 0;
         double savingsIfChoseB = 0;
         double savingsIfChoseC = 0;
+        double savingIfChangedBForC = 0;
 
         System.out.println("What package do you use?");
         userInputPackage = sc.nextLine();
@@ -49,8 +50,10 @@ public class InternetBills {
                 System.out.printf("You would save $%.2f if you've chosen package B\n", savingsIfChoseB);
             }
 
-
-            //savingsIfChoseB = totalBillC - totalBill;
+            if (totalBill>PACKAGE_C_BASE_PRICE) {
+                savingsIfChoseC = totalBill - PACKAGE_C_BASE_PRICE;
+                System.out.printf("You would save $%.2f if you've chosen package C\n", savingsIfChoseC);
+            }
 
         } else if (userInputPackage.equalsIgnoreCase("b")) {
             if (userInputHours > PACKAGE_B_HOURS) {
@@ -59,6 +62,11 @@ public class InternetBills {
             }
             totalBill = PACKAGE_B_BASE_PRICE + extraCharge;
 
+            if (totalBill>PACKAGE_C_BASE_PRICE) {
+                savingIfChangedBForC = totalBill - PACKAGE_C_BASE_PRICE;
+                System.out.printf("You would save $%.2f if you've chosen package C\n", savingIfChangedBForC);
+
+            }
 
         } else if (userInputPackage.equalsIgnoreCase("c")) {
             totalBill = PACKAGE_C_BASE_PRICE;
